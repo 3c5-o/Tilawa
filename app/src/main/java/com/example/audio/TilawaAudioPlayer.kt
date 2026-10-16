@@ -30,6 +30,15 @@ class TilawaAudioPlayer(private val context: Context) {
 
     var onCompletionListener: (() -> Unit)? = null
 
+    private val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as? android.media.AudioManager
+    private val audioFocusListener = android.media.AudioManager.OnAudioFocusChangeListener { focusChange ->
+        when (focusChange) {
+            android.media.AudioManager.AUDIOFOCUS_LOSS,
+            android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT -> pause()
+            android.media.AudioManager.AUDIOFOCUS_GAIN -> resume()
+        }
+    }
+
     private val progressUpdater = object : Runnable {
         override fun run() {
             mediaPlayer?.let { player ->

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="80dp"
+    android:viewportWidth="120"
+    android:viewportHeight="80">
+    <!-- Mosque Silhouette Base Line -->
+    <path
+        android:fillColor="#0D3B31"
+        android:pathData="M0,80 L120,80 L120,60 L0,60 Z" />
+    <!-- Center Grand Dome -->
+    <path
+        android:fillColor="#124A3E"
+        android:pathData="M44,60 C44,38 52,24 60,18 C68,24 76,38 76,60 Z" />
+    <!-- Crescent Finial on Center Dome -->
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M60,12 C61.5,12 63,13 63,15 C61,15 59,16.5 59,18 C61,18 63,17 64,15 C64,11 58,9 56,13 C57.5,12.5 58.8,12 60,12 Z" />
+    <!-- Left Small Dome -->
+    <path
+        android:fillColor="#0E3D33"
+        android:pathData="M24,60 C24,46 30,36 36,32 C42,36 44,46 44,60 Z" />
+    <!-- Right Small Dome -->
+    <path
+        android:fillColor="#0E3D33"
+        android:pathData="M76,60 C76,46 80,36 86,32 C92,36 96,46 96,60 Z" />
+    <!-- Left Minaret -->
+    <path
+        android:fillColor="#145245"
+        android:pathData="M12,60 L12,20 L16,20 L16,60 Z" />
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M11,20 L17,20 L14,10 Z" />
+    <!-- Right Minaret -->
+    <path
+        android:fillColor="#145245"
+        android:pathData="M104,60 L104,20 L108,20 L108,60 Z" />
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M103,20 L109,20 L106,10 Z" />
+    <!-- Glowing Crescent & Star in Sky -->
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M88,8 C89.5,8 91,8.8 91,10.5 C89.2,10.5 87.5,12 87.5,13.5 C89.2,13.5 91,12.5 92,10.5 C92,7 86,5 84,9 C85.5,8.5 86.8,8 88,8 Z" />
+    <!-- Little Star -->
+    <path
+        android:fillColor="#FDE68A"
+        android:pathData="M94,6 L95,8 L97,8 L95.5,9.5 L96,11.5 L94,10.5 L92,11.5 L92.5,9.5 L91,8 L93,8 Z" />
+</vector>

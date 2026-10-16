@@ -40,6 +40,10 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -94,6 +98,17 @@ fun PlayerScreen(
         return String.format("%02d:%02d", min, sec)
     }
 
+    var showSleepTimer by remember { mutableStateOf(false) }
+    var selectedSleepMinutes by remember { mutableStateOf<Int?>(null) }
+
+    if (showSleepTimer) {
+        com.example.ui.components.SleepTimerDialog(
+            currentMinutes = selectedSleepMinutes,
+            onSetTimer = { selectedSleepMinutes = it },
+            onDismiss = { showSleepTimer = false }
+        )
+    }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -146,12 +161,25 @@ fun PlayerScreen(
                     )
                 }
 
-                IconButton(onClick = onToggleFavorite, modifier = Modifier.testTag("player_fav_btn")) {
-                    Icon(
-                        imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
-                        contentDescription = "المفضلة",
-                        tint = if (isFavorite) IslamicGold else TilawaTextPrimary
-                    )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    IconButton(
+                        onClick = { showSleepTimer = true },
+                        modifier = Modifier.testTag("player_sleep_timer_btn")
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.MoreVert,
+                            contentDescription = "مؤقت النوم",
+                            tint = if (selectedSleepMinutes != null) IslamicGold else TilawaTextSecondary
+                        )
+                    }
+
+                    IconButton(onClick = onToggleFavorite, modifier = Modifier.testTag("player_fav_btn")) {
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
+                            contentDescription = "المفضلة",
+                            tint = if (isFavorite) IslamicGold else TilawaTextPrimary
+                        )
+                    }
                 }
             }
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Stand left and right legs -->
+    <path
+        android:fillColor="#D97706"
+        android:pathData="M16,33 L10,41 L14,41 L20,33 Z" />
+    <path
+        android:fillColor="#D97706"
+        android:pathData="M32,33 L38,41 L34,41 L28,33 Z" />
+    <!-- Stand center pivot -->
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M21,31 L27,31 L25,35 L23,35 Z" />
+    <!-- Quran Left Page -->
+    <path
+        android:fillColor="#F9FAFB"
+        android:pathData="M23,17 C16,13 8,13 6,16 L6,30 C8,27 16,27 23,31 Z" />
+    <!-- Quran Left Page Border/Lines -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M9,20 L20,20 L20,21 L9,21 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M9,23 L18,23 L18,24 L9,24 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M9,26 L19,26 L19,27 L9,27 Z" />
+    <!-- Quran Right Page -->
+    <path
+        android:fillColor="#F3F4F6"
+        android:pathData="M25,17 C32,13 40,13 42,16 L42,30 C40,27 32,27 25,31 Z" />
+    <!-- Quran Right Page Lines -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M28,20 L39,20 L39,21 L28,21 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M30,23 L39,23 L39,24 L30,24 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M29,26 L39,26 L39,27 L29,27 Z" />
+    <!-- Spine Ribbon Bookmark -->
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M23.5,18 L24.5,18 L25.5,35 L24,33 L22.5,35 Z" />
+</vector>

@@ -9,8 +9,12 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,8 +22,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.HourglassBottom
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -32,6 +42,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
@@ -45,6 +56,7 @@ import com.example.ui.theme.IslamicGold
 import com.example.ui.theme.IslamicGoldBorder
 import com.example.ui.theme.IslamicGoldSoft
 import com.example.ui.theme.TilawaTextPrimary
+import com.example.ui.theme.TilawaTextSecondary
 
 @Composable
 fun IslamicArchHeader(
@@ -107,7 +119,6 @@ fun AyahNumberBadge(
         contentAlignment = Alignment.Center
     ) {
         Canvas(modifier = Modifier.size(size * 0.75f)) {
-            // Draw 8-point Islamic star outline
             val r = this.size.minDimension / 2f
             val cx = this.size.width / 2f
             val cy = this.size.height / 2f
@@ -211,4 +222,80 @@ fun AudioWaveformVisualizer(
             )
         }
     }
+}
+
+@Composable
+fun SleepTimerDialog(
+    currentMinutes: Int?,
+    onSetTimer: (Int?) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val options = listOf(
+        15 to "15 دقيقة",
+        30 to "30 دقيقة",
+        45 to "45 دقيقة",
+        60 to "ساعة واحدة",
+        null to "إيقاف المؤقت"
+    )
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Default.HourglassBottom,
+                    contentDescription = "مؤقت النوم",
+                    tint = IslamicGold,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "مؤقت النوم",
+                    color = TilawaTextPrimary,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        },
+        text = {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                options.forEach { (mins, label) ->
+                    val isSelected = currentMinutes == mins
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(if (isSelected) EmeraldPrimary.copy(alpha = 0.2f) else EmeraldSurface)
+                            .border(
+                                1.dp,
+                                if (isSelected) EmeraldPrimary else Color(0x2210B981),
+                                RoundedCornerShape(12.dp)
+                            )
+                            .clickable {
+                                onSetTimer(mins)
+                                onDismiss()
+                            }
+                            .padding(horizontal = 14.dp, vertical = 12.dp)
+                    ) {
+                        Text(
+                            text = label,
+                            color = if (isSelected) IslamicGold else TilawaTextPrimary,
+                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                            fontSize = 15.sp
+                        )
+                    }
+                }
+            }
+        },
+        confirmButton = {},
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(text = "إغلاق", color = TilawaTextSecondary)
+            }
+        },
+        containerColor = EmeraldSurfaceCard
+    )
 }

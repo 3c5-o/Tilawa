@@ -212,9 +212,10 @@ fun HomeScreen(
                                     .border(1.5.dp, IslamicGold, CircleShape),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Text(
-                                    text = "📖",
-                                    fontSize = 24.sp
+                                androidx.compose.foundation.Image(
+                                    painter = androidx.compose.ui.res.painterResource(id = com.example.R.drawable.ic_quran_book),
+                                    contentDescription = "المصحف الشريف",
+                                    modifier = Modifier.size(32.dp)
                                 )
                             }
                             Spacer(modifier = Modifier.width(14.dp))

@@ -1,0 +1,14 @@
+# Force LF line endings for gradlew scripts to prevent bash errors on Linux/GitHub Actions
+* text=auto eol=lf
+gradlew text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.png binary
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.jar binary
+*.keystore binary

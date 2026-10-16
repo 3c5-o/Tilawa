@@ -23,6 +23,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Card
@@ -173,9 +174,11 @@ fun DownloadsScreen(
                                             .border(1.dp, Color(0x3310B981), CircleShape),
                                         contentAlignment = Alignment.Center
                                     ) {
-                                        Text(
-                                            text = "📥",
-                                            fontSize = 20.sp
+                                        Icon(
+                                            imageVector = Icons.Default.Download,
+                                            contentDescription = "تنزيل",
+                                            tint = IslamicGold,
+                                            modifier = Modifier.size(22.dp)
                                         )
                                     }
                                     Spacer(modifier = Modifier.width(12.dp))
